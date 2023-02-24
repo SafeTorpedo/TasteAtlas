@@ -1,17 +1,35 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import "./index.css";
 
 const App = () => {
     return (
-        <React.Fragment>
-            <div className="h-screen bg-black text-white ">
-                <Navbar />
-                <h1 className="text-5xl text-center p-8">
-                    WELCOME TO TASTE ATLAS
-                </h1>
-                {/* front end working */}
-            </div>
-        </React.Fragment>
+        <div className="h-screen bg-[#aad077] text-[#0d0a0b] app">
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <React.Fragment>
+                                <Navbar />
+                                <Hero />
+                            </React.Fragment>
+                        }
+                    />
+                    <Route
+                        path="/about"
+                        element={
+                            <React.Fragment>
+                                <Navbar />
+                            </React.Fragment>
+                        }
+                    />
+                </Routes>
+            </BrowserRouter>
+            {/* front end working */}
+        </div>
     );
 };
 
