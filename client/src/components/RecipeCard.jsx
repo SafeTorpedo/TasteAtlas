@@ -18,9 +18,9 @@ function RecipeCard() {
         //         </div>
         //     </div>
         // // </div>
-        <div class="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col relative">
+        <div className="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col ">
             <img
-                class="w-full h-48"
+                className="w-full h-48"
                 src="https://via.placeholder.com/350x150"
                 alt="Placeholder Image"
             />
@@ -33,15 +33,15 @@ function RecipeCard() {
                         Wada Pav
                     </h1>
                 </div>
-                <div class="items-start mb-3">
-                    <h2 class="font-bold text-sm mb-2 text-[#04BF00]">
+                <div className="items-start mb-3">
+                    <h2 className="font-bold text-sm mb-2 text-[#04BF00]">
                         Vegetarian
                     </h2>
-                    <h2 class="font-bold text-sm mb-2 text-[#7E7E7E] pt-5">
+                    <h2 className="font-bold text-sm mb-2 text-[#7E7E7E] pt-5">
                         By Jacob Stanly
                     </h2>
                 </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white  font-medium py-2 px-6 rounded-xl w-36 mx-auto">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white  font-medium py-2 px-6 rounded-xl w-36 mx-auto">
                     Full Recipe
                 </button>
             </div>
