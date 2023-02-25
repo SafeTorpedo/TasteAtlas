@@ -16,15 +16,29 @@ db()
         console.log(err);
     });
 
-//this will create new post
-app.post("/recipe", async (req, res) => {
+//this will get recipe
+app.get("/getrecipe", async(req,res)=>{
     try {
-        const { title, country, description, link } = req.body;
+        const getRecipe = await createRecipe.find();
+        res.json(getRecipe)
+    } catch (err) {
+        console.log(err.message)
+    }
+})
+
+
+
+//this will create new post
+app.post("/newPost", async (req, res) => {
+    try {
+        const {user, title, country, description, link, category } = req.body;
         const newRecipe = await createRecipe.create({
+            user,
             title,
             country,
             description,
             link,
+            category,
         });
         res.json(newRecipe);
     } catch (err) {

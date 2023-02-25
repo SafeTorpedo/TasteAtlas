@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import recipe from "../assets/recipe.jpg";
 
 const AddNew = () => {
-    const handleSubmit = (e) => {
+    const [dbrecipe, setRecipe] = useState("")
+    const [dishName, setDishName] = useState("");
+    const [country, setCountry] = useState("");
+    const [description, setDescription] = useState("");
+    const [videolink, setVideoink] = useState("");
+
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log("Submitted");
+        try {
+            const body = { dishName, country, description, videolink }
+            const resp = await fetch(`http://localhost:3080/newPost`,{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+              });
+              const jsonData = await resp.json();
+              setRecipe(jsonData)
+        } catch (err) {
+            console.error(err.message)
+        }
     };
 
     return (
@@ -21,6 +39,9 @@ const AddNew = () => {
                             <h1 className="p-4  text-3xl font-extrabold">
                                 Add your recipe
                             </h1>
+
+
+
                             <form onSubmit={handleSubmit} className="px-4">
                                 <div className="mb-4 mt-4">
                                     <label
@@ -35,6 +56,7 @@ const AddNew = () => {
                                         type="text"
                                         className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Enter name"
+                                        onChange={(e)=>{setDishName(e.target.value)}}
                                     />
 
                                     <label
@@ -49,6 +71,7 @@ const AddNew = () => {
                                         type="text"
                                         className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Enter country"
+                                        onChange={(e)=>{setCountry(e.target.value)}}
                                     />
 
                                     <label
@@ -65,6 +88,7 @@ const AddNew = () => {
                                         name="steps"
                                         defaultValue="Steps to make this dish are..."
                                         className="bg-gray-200 block border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5"
+                                        onChange={(e)=>{setDescription(e.target.value)}}
                                     />
 
                                     <label
@@ -79,6 +103,7 @@ const AddNew = () => {
                                         type="text"
                                         className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Enter video link"
+                                        onChange={(e)=>{setVideoink(e.target.value)}}
                                     />
                                     <button
                                         type="submit"
@@ -88,6 +113,10 @@ const AddNew = () => {
                                     </button>
                                 </div>
                             </form>
+
+
+
+
                         </div>
                         <img className=" h-100 w-72 rounded-md" src={recipe} />
                     </div>
