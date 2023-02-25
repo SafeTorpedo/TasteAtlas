@@ -6,10 +6,10 @@ import Searchbar from "../components/Searchbar";
 const Dashboard = () => {
     return (
         <div className="h-screen text-[#0d0a0b]">
-            <Navbar loggedIn={true} name="Test" />
+            <Navbar />
 
             <Searchbar />
-            <RecipeCard/>
+            <RecipeCard />
         </div>
     );
 };
