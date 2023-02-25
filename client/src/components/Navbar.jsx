@@ -10,7 +10,7 @@ const Navbar = (props) => {
     };
     return (
         <nav className="py-4 px-4 flex bg-[#9cc861] justify-between ">
-            <span className="text_base font-semibold">TasteAtlas</span>
+            <span className="text_base font-semibold cursor-pointer"><Link to="/">TasteAtlas</Link></span>
             <ul className="hidden px-4 md:flex ">
                 <li className="px-5">Log in</li>{" "}
                 {/* Use props to change button to Log out */}

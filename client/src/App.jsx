@@ -1,34 +1,20 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
 import "./index.css";
+import LandingPage from "./pages/LandingPage";
+import About from './pages/About'
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
     return (
         <div className="h-screen bg-[#aad077] text-[#0d0a0b] app">
             <BrowserRouter>
                 <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <React.Fragment>
-                                <Navbar />
-                                <Hero />
-                            </React.Fragment>
-                        }
-                    />
-                    <Route
-                        path="/about"
-                        element={
-                            <React.Fragment>
-                                <Navbar />
-                            </React.Fragment>
-                        }
-                    />
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </BrowserRouter>
-            {/* front end working */}
         </div>
     );
 };
