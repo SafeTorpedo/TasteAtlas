@@ -9,10 +9,20 @@ const Navbar = (props) => {
         setNav(!nav);
     };
     return (
-        <nav className="py-4 px-4 flex bg-[#9cc861] justify-between ">
-            <span className="text_base font-semibold cursor-pointer"><Link to="/">TasteAtlas</Link></span>
+        <nav className="py-4 px-4 flex bg-[#9cc861] bg-inherit justify-between ">
+            <span className="px-8 text_base font-semibold cursor-pointer">
+                <Link to="/">TasteAtlas</Link>
+            </span>
             <ul className="hidden px-4 md:flex ">
-                <li className="px-5">Log in</li>{" "}
+                {props.loggedIn ? (
+                    <>
+                        <li className="px-5">Welcome, {props.name}</li>
+                        <li className="px-5">Log out</li>
+                    </>
+                ) : (
+                    <li className="px-5">Log in</li>
+                )}
+
                 {/* Use props to change button to Log out */}
                 <li>
                     <Link to="/about">About us</Link>
@@ -34,8 +44,19 @@ const Navbar = (props) => {
             >
                 <h1 className="text-3xl font-bold p-6 m-8">TasteAtlas</h1>
                 <ul className="pt-12 p-8 ">
-                    <li className="p-4 border-b border-[#507b14]">Log in</li>{" "}
-                    {/* Use props to change button to Log out */}
+                    {props.loggedIn ? (
+                        <>
+                            <li className="p-4 border-b border-[#507b14]">
+                                Welcome, {props.name}
+                            </li>
+                            <li className="p-4 border-b border-[#507b14]">
+                                Log out
+                            </li>
+                        </>
+                    ) : (
+                        <li className="px-5">Log in</li>
+                    )}
+                    {/* Used props to change button to Log out */}
                     <li className="p-4">
                         <Link to="/about">About us</Link>
                     </li>
