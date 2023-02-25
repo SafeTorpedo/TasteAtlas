@@ -9,7 +9,7 @@ const Dashboard = () => {
             <Navbar />
 
             <Searchbar />
-            <RecipeCard />
+            <RecipeCard country="India"/>
         </div>
     );
 };
