@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 
 const App = () => {
     return (
-        <div className="h-screen bg-[#aad077] text-[#0d0a0b] app">
+        <div className="h-screen app">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LandingPage />} />

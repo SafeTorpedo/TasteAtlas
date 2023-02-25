@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className='h-screen bg-[#aad077] text-[#0d0a0b]'>
         <Navbar />
         <Hero />
     </div>

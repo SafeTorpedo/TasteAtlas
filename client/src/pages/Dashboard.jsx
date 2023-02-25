@@ -1,11 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import DashNavbar from '../components/DashNavbar'
+import Searchbar from '../components/Searchbar'
 
 const Dashboard = () => {
   return (
-    <div>
-        <Navbar />
-        {/* dashboard here */}
+    <div className='h-screen text-[#0d0a0b]'>
+        <DashNavbar />
+        <Searchbar />
     </div>
   )
 }
