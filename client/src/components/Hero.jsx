@@ -18,7 +18,7 @@ const Hero = () => {
                 {/* make a sign up button at the  */}
 
                 <button className="bg-[#507b14] text-white mt-10 ml-40  px-6 py-2 text-center rounded-xl w-36">
-                    Sign up
+                    About Us
                 </button>
             </div>
         </div>
