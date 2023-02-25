@@ -10,7 +10,7 @@ const Navbar = (props) => {
         setNav(!nav);
     };
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-    console.log(user);
+    // console.log(user);
     return (
         <nav className="py-4 px-10 flex bg-inherit justify-between ">
             <span className=" text-xl font-bold cursor-pointer">

@@ -4,16 +4,16 @@ import recipe from "../assets/recipe.jpg";
 
 const AddNew = () => {
     const [dbrecipe, setRecipe] = useState("")
-    const [dishName, setDishName] = useState("");
+    const [title, setTitle] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
-    const [videolink, setVideoink] = useState("");
+    const [link, setLink] = useState("");
 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const body = { dishName, country, description, videolink }
+            const body = { title, country, description, link }
             const resp = await fetch(`http://localhost:3080/newPost`,{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -56,7 +56,7 @@ const AddNew = () => {
                                         type="text"
                                         className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Enter name"
-                                        onChange={(e)=>{setDishName(e.target.value)}}
+                                        onChange={(e)=>{setTitle(e.target.value)}}
                                     />
 
                                     <label
@@ -103,7 +103,7 @@ const AddNew = () => {
                                         type="text"
                                         className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Enter video link"
-                                        onChange={(e)=>{setVideoink(e.target.value)}}
+                                        onChange={(e)=>{setLink(e.target.value)}}
                                     />
                                     <button
                                         type="submit"
