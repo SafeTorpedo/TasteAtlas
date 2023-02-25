@@ -1,15 +1,16 @@
 import React from "react";
-import food from "../assets/food.jpg";
+import food from "../assets/food.png";
 
 const Hero = () => {
     return (
-        <div className=" p-6 md:columns-2 ">
-            <img src={food} alt="food" className=" h-full inline w-full " />
-            <div>
-                <h1 className="text-6xl text-left flex justify-center p-8 font-bold">
-                    Experience the taste from around the world
+        // <div className=" p-6 md:columns-2 ">
+        <div className="flex mt-10">
+            <img src={food} alt="food" className="w-1/2 h-full" />
+            <div className="">
+                <h1 className="text-5xl text-left justify-center p-8 font-bold">
+                Experience the taste from around the world
                 </h1>
-                <p>
+                <p className="text-lg w-3/4">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce sapien ipsum, condimentum vel eleifend eget, bibendum
                     lobortis nisl. Integer justo tortor, tincidunt quis placerat
