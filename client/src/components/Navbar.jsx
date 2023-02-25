@@ -10,7 +10,7 @@ const Navbar = (props) => {
     };
     return (
         <nav className="py-4 px-4 flex bg-[#9cc861] bg-inherit justify-between ">
-            <span className="px-8 text-lg font-bold cursor-pointer">
+            <span className="px-8 text-2xl font-bold cursor-pointer">
                 <Link to="/">TasteAtlas</Link>
             </span>
             <ul className="hidden px-4 md:flex ">
@@ -59,6 +59,7 @@ const Navbar = (props) => {
                         </li>
                     )}
                     {/* Used props to change button to Log out */}
+                    
                     <li className="p-4">
                         <Link to="/about">About us</Link>
                     </li>

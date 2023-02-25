@@ -1,5 +1,5 @@
 import React from "react";
-
+import RecipeCard from "../components/RecipeCard";
 import Navbar from "../components/Navbar";
 import Searchbar from "../components/Searchbar";
 
@@ -9,6 +9,7 @@ const Dashboard = () => {
             <Navbar loggedIn={true} name="Test" />
 
             <Searchbar />
+            <RecipeCard/>
         </div>
     );
 };
