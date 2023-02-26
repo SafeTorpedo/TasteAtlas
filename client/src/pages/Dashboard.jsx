@@ -24,8 +24,8 @@ const Dashboard = () => {
             <Navbar />
 
             <Searchbar />
-            <div className=" grid">
-                <div className=" flex grid-cols-3">
+            <div className="">
+                <div className="grid grid-cols-4">
                     {info.map((info) => (
                         <RecipeCard
                             key={info.id}
