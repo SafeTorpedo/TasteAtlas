@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import recipe from "../assets/recipe.jpg";
 // import { redirect } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AddNew = () => {
     const [title, setTitle] = useState("");
@@ -9,18 +10,20 @@ const AddNew = () => {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("Veg");
     const [link, setLink] = useState("");
+    const User=useAuth0();
 
     const handleSubmit = async (e) => {
+        const user = User.user.given_name;
         e.preventDefault();
         try {
-            const body = { title, country, description, link, category };
+            const body = { user,title, country, description, link, category };
             const resp = await fetch(`http://localhost:3080/newPost`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
             const jsonData = await resp.json();
-            setRecipe(jsonData);
+            // setRecipe(jsonData);
             // redirect("/dashboard");
         } catch (err) {
             console.error(err.message);
