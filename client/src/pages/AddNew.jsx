@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import recipe from "../assets/recipe.jpg";
+import { useNavigate } from "react-router-dom";
 // import { redirect } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -12,6 +13,7 @@ const AddNew = () => {
     const [link, setLink] = useState("");
     const User=useAuth0();
 
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         const user = User.user.given_name;
         e.preventDefault();
@@ -28,6 +30,7 @@ const AddNew = () => {
         } catch (err) {
             console.error(err.message);
         }
+        navigate("/dashboard");
     };
 
     //radio button event handler
