@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useAuth0 } from "@auth0/auth0-react";
+// import logo from "../../public/"
 
 const Navbar = (props) => {
     const [nav, setNav] = useState(true);
@@ -13,14 +14,19 @@ const Navbar = (props) => {
     // console.log(user);
     return (
         <nav className="py-4 px-10 flex bg-inherit justify-between shadow-md">
-            <span className=" mt-1 text-2xl font-bold cursor-pointer">
-                <Link to="/">TasteAtlas</Link>
+            <span className=" mt-1 text-2xl font-bold cursor-pointer ">
+                <Link className="flex" to="/">
+                    <img className=" w-24 h-10 -mr-6" src="/TasteAtlas.svg" />
+                    TasteAtlas
+                </Link>
             </span>
             <ul className="hidden px-4 md:flex ">
                 <div className="px-5">
                     {isAuthenticated ? (
                         <li className="mr-1">
-                            <p className="inline pr-5">Welcome {user.given_name}</p>
+                            <p className="inline pr-5">
+                                Welcome {user.given_name}
+                            </p>
                             <button
                                 className="bg-[#FF0000] px-4 py-1 rounded-lg text-white"
                                 onClick={() =>
