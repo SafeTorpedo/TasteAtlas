@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import flag from "../assets/image 6.png";
 import searchImages from "../api";
 
 const RecipeCard = (props) => {
     const [imageUrl, setImageUrl] = useState("");
+    const [info, setInfo] = useState("");
+
+
+    const renderCard = async(req,res)=>{
+        try {
+            const response = await fetch(`http://localhost:3080/getrecipe/`)
+            const jsonData = await response.json();
+            setInfo(jsonData)
+            console.log(jsonData)
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
 
     const search = async () => {
         const response = await searchImages(props.dish);
@@ -11,24 +24,11 @@ const RecipeCard = (props) => {
     };
 
     search();
+    useEffect(()=>{
+        renderCard();
+    },[])
 
     return (
-        // // <div class="grid grid-cols-[repeat(4,1fr)] mt-10">
-        //     <div class="bg-white shadow-[1px_1px_8px_rgba(170,170,170,0.595)] w-[70%] mx-auto my-0 rounded-[10px]">
-        //         <div class="food-img">
-        //             <img className="w-full rounded-[10px]"
-        //                 src="https://via.placeholder.com/350x150"
-        //                 alt="food image"
-        //             />
-        //         </div>
-        //         <div class="w-4/5 grid grid-rows-[1fr_1fr_1fr_1fr_0.3fr] gap-0.5 mx-auto my-0">
-        //             <h3 class="text-3xl font-semibold pt-2.5">Pav Bhaji</h3>
-        //             <p class="text-lg text-[#04bf00]">Vegetarian</p>
-        //             <p class="text-sm text-[#aaa]">By Salman Khan</p>
-        //             <button class="w-[70%] self-center text-white bg-[#2e89fd] shadow-[0_4px_5px_rgb(104,104,104)] cursor-pointer transition-all duration-[0.3s] mx-auto my-0 p-2 rounded-[10px] border-[none] hover:shadow-[0_0px_20px_rgba(104,104,104,0.352)]">See Recipe</button>
-        //         </div>
-        //     </div>
-        // // </div>
         <div className="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col ">
             <img className="w-full h-48" src={imageUrl} alt="image" />
             <div className="flex flex-col pl-4 pb-6 ">
