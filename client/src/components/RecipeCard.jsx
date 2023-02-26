@@ -4,29 +4,16 @@ import searchImages from "../api";
 
 const RecipeCard = (props) => {
     const [imageUrl, setImageUrl] = useState("");
-    const [info, setInfo] = useState("");
     const [showModal, setShowModal] = useState(false);
 
-    const renderCard = async (req, res) => {
-        try {
-            const response = await fetch(`http://localhost:3080/getrecipe/`);
-            const jsonData = await response.json();
-            setInfo(jsonData);
-            console.log(jsonData);
-        } catch (err) {
-            console.error(err.message);
-        }
-    };
-
+    
     const search = async () => {
         const response = await searchImages(props.dish);
         setImageUrl(response);
     };
 
     search();
-    useEffect(() => {
-        renderCard();
-    }, []);
+    
 
     return (
         <div className="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col ">
@@ -47,7 +34,7 @@ const RecipeCard = (props) => {
                 </div>
                 <div className="items-start mb-3">
                     <h2 className="font-bold text-sm mb-2 text-[#04BF00]">
-                        Vegetarian
+                       {props.category}
                     </h2>
                     <h2 className="font-bold text-sm mb-2 text-[#7E7E7E] pt-5">
                         By Jacob Stanly

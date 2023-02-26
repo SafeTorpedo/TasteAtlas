@@ -7,13 +7,13 @@ const AddNew = () => {
     const [title, setTitle] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
-    const [foodType, setFoodType] = useState("");
+    const [category, setCategory] = useState("");
     const [link, setLink] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const body = { title, country, description, link };
+            const body = { title, country, description, link, category };
             const resp = await fetch(`http://localhost:3080/newPost`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -115,7 +115,7 @@ const AddNew = () => {
                                                 value="Non-Veg"
                                                 name="dishType"
                                                 onChange={(e) => {
-                                                    setFoodType(e.target.value);
+                                                    setCategory(e.target.value);
                                                 }}
                                             />
                                             Non-Veg
