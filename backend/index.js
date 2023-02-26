@@ -16,7 +16,7 @@ db()
         console.log(err);
     });
 
-//this will get recipe
+//this will get all the recipe
 app.get("/getrecipe", async(req,res)=>{
     try {
         const getRecipe = await createRecipe.find();
@@ -26,6 +26,11 @@ app.get("/getrecipe", async(req,res)=>{
     }
 })
 
+app.get("/getrecipe/:country", async(req,res)=>{
+    const {country} = req.params;
+    const get = await createRecipe.findOne({country: `${country}`})
+    res.json(get)
+})
 
 
 //this will create new post

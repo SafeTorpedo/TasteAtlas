@@ -41,7 +41,7 @@ const RecipeCard = (props) => {
                         {props.category}
                     </h2>
                     <h2 className="font-bold text-sm mb-2 text-[#7E7E7E] pt-5">
-                        {props.user}
+                        by {props.user}
                     </h2>
                 </div>
                 <button
