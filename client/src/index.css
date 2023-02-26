@@ -2,10 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.app {
-    background-image: url("./assets/background.jpg");
+html{
+    overflow: hidden;
+}
+#root{
+    /* background-image: url("./assets/background.jpg");
+    position:absolute;
+    top: 0;
+    left: ;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; */
+    /* height: 100vh; */
     background-attachment: fixed;
-    height: 120vh;
+    background-image:url("./assets/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: scroll;
 }
