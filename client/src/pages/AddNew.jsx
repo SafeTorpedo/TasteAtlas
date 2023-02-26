@@ -7,7 +7,7 @@ const AddNew = () => {
     const [title, setTitle] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
-    const [foodType, setFoodType] = useState("Veg");
+    const [category, setCategory] = useState("Veg");
     const [link, setLink] = useState("");
 
     const handleSubmit = async (e) => {
@@ -28,8 +28,7 @@ const AddNew = () => {
 
     //radio button event handler
     const handleChange = (e) => {
-        setFoodType(e.target.value);
-        console.log(e.target.value);
+        setCategory(e.target.value);
     };
 
     return (
@@ -108,8 +107,8 @@ const AddNew = () => {
                                             <input
                                                 type="radio"
                                                 value="Veg"
-                                                name="foodType"
-                                                checked={foodType === "Veg"}
+                                                name="category"
+                                                checked={category === "Veg"}
                                                 onChange={handleChange}
                                             />
                                             Veg
@@ -118,8 +117,8 @@ const AddNew = () => {
                                             <input
                                                 type="radio"
                                                 value="Non-Veg"
-                                                name="foodType"
-                                                checked={foodType === "Non-Veg"}
+                                                name="category"
+                                                checked={category === "Non-Veg"}
                                                 onChange={handleChange}
                                             />
                                             Non-Veg
