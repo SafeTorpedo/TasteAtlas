@@ -5,18 +5,18 @@ import searchImages from "../api";
 const RecipeCard = (props) => {
     const [imageUrl, setImageUrl] = useState("");
     const [info, setInfo] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
-
-    const renderCard = async(req,res)=>{
+    const renderCard = async (req, res) => {
         try {
-            const response = await fetch(`http://localhost:3080/getrecipe/`)
+            const response = await fetch(`http://localhost:3080/getrecipe/`);
             const jsonData = await response.json();
-            setInfo(jsonData)
-            console.log(jsonData)
+            setInfo(jsonData);
+            console.log(jsonData);
         } catch (err) {
-            console.error(err.message)
+            console.error(err.message);
         }
-    }
+    };
 
     const search = async () => {
         const response = await searchImages(props.dish);
@@ -24,9 +24,9 @@ const RecipeCard = (props) => {
     };
 
     search();
-    useEffect(()=>{
+    useEffect(() => {
         renderCard();
-    },[])
+    }, []);
 
     return (
         <div className="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col ">
@@ -53,10 +53,79 @@ const RecipeCard = (props) => {
                         By Jacob Stanly
                     </h2>
                 </div>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white  font-medium py-2 px-6 rounded-xl w-36 mx-auto">
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white  font-medium py-2 px-6 rounded-xl w-36 mx-auto"
+                    onClick={() => setShowModal(true)}
+                >
                     Full Recipe
                 </button>
             </div>
+
+            {showModal ? (
+                <>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                            {/*content*/}
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                    <h3 className="text-3xl font-semibold">
+                                        Dish Name
+                                    </h3>
+                                    {/* <button
+                                        className="p-1 ml-auto  border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                        onClick={() => setShowModal(false)}>
+                                        <span className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none">
+                                            × 
+                                        </span>
+                                    </button> */}
+                                </div>
+                                {/*body*/}
+                                <div className="relative p-6 flex flex-col">
+                                    <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Quos ipsum deleniti
+                                        fugit vitae, expedita fuga facilis, eos,
+                                        enim quia minima soluta maxime. Saepe
+                                        nulla at natus illo perspiciatis esse
+                                        fugiat sit. Hic asperiores facilis sit
+                                        in quo! Tempore nobis repudiandae maxime
+                                        nulla assumenda placeat eos cumque modi?
+                                        Ut numquam saepe deserunt esse id?
+                                        Magnam vitae neque illum consectetur,
+                                        rerum nam ad dolor hic asperiores libero
+                                        dicta, aspernatur repellat, illo error
+                                        beatae. Omnis voluptatum architecto
+                                        aperiam, illum culpa quaerat a! Maxime
+                                        aliquid asperiores quae, facilis a,
+                                        nobis, optio illo magni amet numquam
+                                        harum temporibus esse ullam animi saepe
+                                        vero nostrum blanditiis!
+                                    </p>
+                                    <a
+                                        className="bg-red-600 w-1/4 text-center text-white active:bg-red-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 cursor-pointer inline-block self-center"
+                                        href="#"
+                                        target="_blank"
+                                    >
+                                        Video Link
+                                    </a>
+                                </div>
+                                {/*footer*/}
+                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                    <button
+                                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button"
+                                        onClick={() => setShowModal(false)}
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                </>
+            ) : null}
         </div>
     );
 };
