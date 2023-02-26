@@ -7,7 +7,7 @@ const AddNew = () => {
     const [title, setTitle] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
+    const [foodType, setFoodType] = useState("Veg");
     const [link, setLink] = useState("");
 
     const handleSubmit = async (e) => {
@@ -24,6 +24,12 @@ const AddNew = () => {
         } catch (err) {
             console.error(err.message);
         }
+    };
+
+    //radio button event handler
+    const handleChange = (e) => {
+        setFoodType(e.target.value);
+        console.log(e.target.value);
     };
 
     return (
@@ -102,10 +108,9 @@ const AddNew = () => {
                                             <input
                                                 type="radio"
                                                 value="Veg"
-                                                name="dishType"
-                                                onChange={(e) => {
-                                                    setFoodType(e.target.value);
-                                                }}
+                                                name="foodType"
+                                                checked={foodType === "Veg"}
+                                                onChange={handleChange}
                                             />
                                             Veg
                                         </label>
@@ -113,10 +118,9 @@ const AddNew = () => {
                                             <input
                                                 type="radio"
                                                 value="Non-Veg"
-                                                name="dishType"
-                                                onChange={(e) => {
-                                                    setCategory(e.target.value);
-                                                }}
+                                                name="foodType"
+                                                checked={foodType === "Non-Veg"}
+                                                onChange={handleChange}
                                             />
                                             Non-Veg
                                         </label>
