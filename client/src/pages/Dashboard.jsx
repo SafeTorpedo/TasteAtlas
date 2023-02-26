@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Searchbar from "../components/Searchbar";
 
 const Dashboard = () => {
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState([]);
 
     const renderCard = async (req, res) => {
         try {
@@ -24,8 +24,20 @@ const Dashboard = () => {
             <Navbar />
 
             <Searchbar />
-            {info.map((info)=>(<RecipeCard country={info.country} dish={info.title} category={info.category} />))}
-            
+            <div className=" grid">
+                <div className=" flex grid-cols-3">
+                    {info.map((info) => (
+                        <RecipeCard
+                            key={info.id}
+                            country={info.country}
+                            dish={info.title}
+                            category={info.category}
+                            description={info.description}
+                            link={info.link}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

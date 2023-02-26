@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import recipe from "../assets/recipe.jpg";
+// import { redirect } from "react-router-dom";
 
 const AddNew = () => {
-    const [dbrecipe, setRecipe] = useState("");
     const [title, setTitle] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
@@ -21,6 +21,7 @@ const AddNew = () => {
             });
             const jsonData = await resp.json();
             setRecipe(jsonData);
+            // redirect("/dashboard");
         } catch (err) {
             console.error(err.message);
         }
@@ -141,6 +142,7 @@ const AddNew = () => {
                                             setLink(e.target.value);
                                         }}
                                     />
+
                                     <button
                                         type="submit"
                                         className="bg-[#507b14] text-white mt-2 ml-32  px-6 py-2 text-center rounded-xl w-36"
