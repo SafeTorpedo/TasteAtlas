@@ -6,14 +6,12 @@ const RecipeCard = (props) => {
     const [imageUrl, setImageUrl] = useState("");
     const [showModal, setShowModal] = useState(false);
 
-    
     const search = async () => {
         const response = await searchImages(props.dish);
         setImageUrl(response);
     };
 
     search();
-    
 
     return (
         <div className="w-72 m-16 rounded-xl overflow-hidden shadow-lg bg-[#FFFFFF] justify-center content-center flex flex-col ">
@@ -33,11 +31,17 @@ const RecipeCard = (props) => {
                     </h1>
                 </div>
                 <div className="items-start mb-3">
-                    <h2 className="font-bold text-sm mb-2 text-[#04BF00]">
-                       {props.category}
+                    <h2
+                        className={
+                            props.category === "Veg"
+                                ? "font-bold text-sm mb-2 text-[#04BF00]"
+                                : "font-bold text-sm mb-2 text-[#a91b0d]"
+                        }
+                    >
+                        {props.category}
                     </h2>
                     <h2 className="font-bold text-sm mb-2 text-[#7E7E7E] pt-5">
-                        By Jacob Stanly
+                        Jacob Stanley
                     </h2>
                 </div>
                 <button
@@ -70,28 +74,11 @@ const RecipeCard = (props) => {
                                 {/*body*/}
                                 <div className="relative p-6 flex flex-col">
                                     <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Quos ipsum deleniti
-                                        fugit vitae, expedita fuga facilis, eos,
-                                        enim quia minima soluta maxime. Saepe
-                                        nulla at natus illo perspiciatis esse
-                                        fugiat sit. Hic asperiores facilis sit
-                                        in quo! Tempore nobis repudiandae maxime
-                                        nulla assumenda placeat eos cumque modi?
-                                        Ut numquam saepe deserunt esse id?
-                                        Magnam vitae neque illum consectetur,
-                                        rerum nam ad dolor hic asperiores libero
-                                        dicta, aspernatur repellat, illo error
-                                        beatae. Omnis voluptatum architecto
-                                        aperiam, illum culpa quaerat a! Maxime
-                                        aliquid asperiores quae, facilis a,
-                                        nobis, optio illo magni amet numquam
-                                        harum temporibus esse ullam animi saepe
-                                        vero nostrum blanditiis!
+                                        {props.description}
                                     </p>
                                     <a
                                         className="bg-red-600 w-1/4 text-center text-white active:bg-red-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 cursor-pointer inline-block self-center"
-                                        href="#"
+                                        href={props.link}
                                         target="_blank"
                                     >
                                         Video Link
