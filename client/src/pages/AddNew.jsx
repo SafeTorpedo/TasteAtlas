@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import recipe from "../assets/recipe.jpg";
+import { useNavigate } from "react-router-dom";
 // import { redirect } from "react-router-dom";
 
 const AddNew = () => {
@@ -10,6 +11,7 @@ const AddNew = () => {
     const [category, setCategory] = useState("Veg");
     const [link, setLink] = useState("");
 
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -21,10 +23,10 @@ const AddNew = () => {
             });
             const jsonData = await resp.json();
             setRecipe(jsonData);
-            // redirect("/dashboard");
         } catch (err) {
             console.error(err.message);
         }
+        navigate("/dashboard");
     };
 
     //radio button event handler
