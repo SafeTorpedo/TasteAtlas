@@ -34,6 +34,7 @@ const Dashboard = () => {
                             category={info.category}
                             description={info.description}
                             link={info.link}
+                            user={info.user}
                         />
                     ))}
                 </div>
