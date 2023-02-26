@@ -10,7 +10,7 @@ const Navbar = (props) => {
         setNav(!nav);
     };
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-    // console.log(user);
+    console.log(user);
     return (
         <nav className="py-4 px-10 flex bg-inherit justify-between shadow-md">
             <span className=" mt-1 text-2xl font-bold cursor-pointer">
@@ -20,8 +20,9 @@ const Navbar = (props) => {
                 <div className="px-5">
                     {isAuthenticated ? (
                         <li className="mr-1">
+                            <p className="inline pr-5">Welcome {user.given_name}</p>
                             <button
-                            className="bg-[#FF0000] px-4 py-1 rounded-lg text-white"
+                                className="bg-[#FF0000] px-4 py-1 rounded-lg text-white"
                                 onClick={() =>
                                     logout({ returnTo: window.location.origin })
                                 }
@@ -32,6 +33,7 @@ const Navbar = (props) => {
                     ) : (
                         <li className="mt-1 mr-1">
                             <button
+                                className="bg-blue-500 px-4 py-1 rounded-lg text-white"
                                 onClick={() =>
                                     loginWithRedirect({
                                         redirect_uri:
